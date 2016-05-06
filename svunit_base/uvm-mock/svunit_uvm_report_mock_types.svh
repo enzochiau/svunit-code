@@ -21,6 +21,10 @@
 
 
 class svunit_uvm_report_mock_expected_actual_container extends uvm_report_catcher;
+
+`ifdef UVM_POST_VERSION_1_1
+  typedef uvm_severity uvm_severity_type;
+`endif
   
   typedef struct {
     string        id;

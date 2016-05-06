@@ -104,7 +104,11 @@ class svunit_uvm_test extends uvm_test;
     //------------------------------------------------
     uvm_root top;
     top = uvm_root::get();
+`ifdef UVM_POST_VERSION_1_1
     top.m_rh.set_severity_id_action(UVM_MEDIUM, "PH_JUMP", UVM_NO_ACTION);
+`else
+    top.m_rh.set_severity_id_action(UVM_INFO, "PH_JUMP", UVM_NO_ACTION);
+`endif
 
     //-------------
     // do the jump
