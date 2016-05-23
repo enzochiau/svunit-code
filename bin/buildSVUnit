@@ -128,11 +128,11 @@ sub buildTestsuite
   if (@unittest > 0) {
     my $cmd = "create_testsuite.pl -overwrite -out $outdir/$dirID\_testsuite.sv";
     foreach (@unittest) {
-      $FILELIST->print("$cwd/$_\n");
+      $FILELIST->print("$_\n");
       $cmd .= " -add $_";
     }
     system($cmd);
-    $FILELIST->print("+incdir+$cwd/$dir\n");
+    $FILELIST->print("+incdir+$dir\n");
   }
 
   # recursively do the same through sub-directories
@@ -185,6 +185,6 @@ $FILELIST->print("+incdir+$ENV{SVUNIT_INSTALL}/svunit_base/uvm-mock\n");
 $FILELIST->print("$ENV{SVUNIT_INSTALL}/svunit_base/svunit_pkg.sv\n");
 
 getFilelists;
-buildTestsuite($pwd);
+buildTestsuite($outdir);
 exit buildTestrunner;
 #print "Info: Found no unit tests. No SVUnit framework created.\n";
