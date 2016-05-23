@@ -21,7 +21,7 @@
 #
 ################################################################
 
-export SVUNIT_INSTALL=`pwd`
+export SVUNIT_INSTALL=$(realpath $(dirname "${BASH_SOURCE[0]}"))
 if [ "${PATH/$SVUNIT_INSTALL\/bin/}" == "$PATH" ]; then
-  export PATH=$PATH:$SVUNIT_INSTALL"/bin"
+  export PATH=${PATH}:$${SVUNIT_INSTALL}/bin
 fi
